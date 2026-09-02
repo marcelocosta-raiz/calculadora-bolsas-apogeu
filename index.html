@@ -189,7 +189,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#8a9ab0;}
   <div id="painel-calc" class="painel">
     <div class="card">
       <h2>Calculadora de Negociação — Mensalidade 2027</h2>
-      <p style="font-size:12px;color:#607080;margin-bottom:16px;">Informe o desconto e veja se a proposta atinge o ticket alvo da série. Apogeu não possui 1ª cota — ticket = mensalidade negociada.</p>
+      <p style="font-size:12px;color:#607080;margin-bottom:16px;">Informe o desconto na mensalidade. O material didático é fixo (sem desconto nesta modalidade) e compõe o ticket total. Meta: Mensalidade Líquida + Material ≥ Ticket Alvo.</p>
       <div class="calc-grid">
         <div class="calc-inputs">
           <div class="input-group">
@@ -211,7 +211,15 @@ footer{text-align:center;padding:24px;font-size:12px;color:#8a9ab0;}
             <input type="checkbox" id="cm-irmao" onchange="calcMens()">
             Desconto de irmão (+5%)
           </label>
-          <p class="hint">Apogeu: 12 mensalidades — ticket = mensalidade negociada.</p>
+          <div id="cm-material-box" style="display:none;background:#fff8e1;border:2px solid var(--cv);border-radius:10px;padding:12px 14px;margin-top:4px;">
+            <div style="font-size:11px;font-weight:700;color:#7a5200;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">📦 Material Didático — fixo (parcelado em 12x)</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:13px;color:#555;">Valor do material</span>
+              <b id="cm-material-val" style="font-size:16px;color:#7a5200;">—</b>
+            </div>
+            <div style="font-size:11px;color:#9a7a00;margin-top:4px;">Pago junto com a mensalidade — sem desconto nesta modalidade</div>
+          </div>
+          <p class="hint">Apogeu: 12 mensalidades. Ticket total = Mensalidade Líquida + Material.</p>
         </div>
         <div class="calc-result" id="cm-result">
           <p style="color:#8a9ab0;font-size:13px;">Selecione uma série para calcular.</p>
@@ -331,7 +339,8 @@ function populateCalcSeries(){
     rows.forEach(d=>{
       const o=document.createElement('option');
       o.value=`${d.segmento}|${d.serie}|${d.turno||''}`;
-      o.textContent=`${d.serie}${d.turno&&d.turno!=='Único'?' ('+d.turno+')':''} — ${fmt(d.mensalidade)}/mês`;
+      const ticket=d.material?`mens. ${fmt(d.mensalidade)} + mat. ${fmt(d.material)}`:`${fmt(d.mensalidade)}/mês`;
+      o.textContent=`${d.serie}${d.turno&&d.turno!=='Único'?' ('+d.turno+')':''} — ${ticket}`;
       grp.appendChild(o);
     });
     sel.appendChild(grp);
@@ -360,29 +369,51 @@ function onDescValChange(){ const d=getDado(); if(d){ const v=parseFloat(documen
 
 function calcMens(){
   const d=getDado();
-  if(!d){ document.getElementById('cm-result').innerHTML='<p style="color:#8a9ab0;font-size:13px;">Selecione uma série para calcular.</p>'; return; }
+  if(!d){
+    document.getElementById('cm-result').innerHTML='<p style="color:#8a9ab0;font-size:13px;">Selecione uma série para calcular.</p>';
+    document.getElementById('cm-material-box').style.display='none';
+    return;
+  }
   const descPct=parseFloat(document.getElementById('cm-desc').value)||0;
   const comIrmao=document.getElementById('cm-irmao').checked;
   const totalDesc=Math.min(100,descPct+(comIrmao?5:0));
   const mensCalc=d.mensalidade*(1-totalDesc/100);
   const descReais=d.mensalidade-mensCalc;
+  const material=d.material||0;
+  const ticketTotal=mensCalc+material; // Apogeu: ticket = mensalidade líquida + material
+
+  // Exibir caixa de material no painel esquerdo
+  const matBox=document.getElementById('cm-material-box');
+  if(material>0){
+    matBox.style.display='block';
+    document.getElementById('cm-material-val').textContent=fmt(material)+'/mês';
+  } else {
+    matBox.style.display='none';
+  }
+
   document.getElementById('cm-info').textContent=`Segmento: ${d.segmento} | Turno: ${d.turno||'Único'} | Anuidade: ${fmt(d.anuidade)}`;
 
   const meta=getMeta(d);
   let metaHtml='';
   if(meta){
-    const acima=mensCalc>=meta.ticket_alvo;
-    const delta=mensCalc-meta.ticket_alvo;
-    const deltaPct=((mensCalc/meta.ticket_alvo)-1)*100;
+    const acima=ticketTotal>=meta.ticket_alvo;
+    const delta=ticketTotal-meta.ticket_alvo;
+    const deltaPct=((ticketTotal/meta.ticket_alvo)-1)*100;
     const cls=acima?'acima':'abaixo';
     const icon=acima?'✅':'⚠️';
-    const sugestao = !acima ? `<div class="res-linha"><span>Mensalidade mínima p/ atingir alvo</span><b style="color:var(--verde)">${fmt(meta.ticket_alvo)}</b></div>` : '';
+    // Sugestão reversa: qual mensalidade mínima faz ticketTotal >= ticket_alvo
+    const mensSugerida=meta.ticket_alvo-material;
+    const sugestao = !acima ? `<div class="res-linha"><span>💡 Mensalidade mín. p/ atingir alvo</span><b style="color:var(--verde)">${fmt(Math.max(0,mensSugerida))}</b></div>
+      <div class="res-linha"><span>Ticket total mínimo (mens.+mat.)</span><b style="color:var(--verde)">${fmt(meta.ticket_alvo)}</b></div>` : '';
     metaHtml=`<div class="meta-box ${cls}">
       <div class="status">${icon} ${acima?'ACIMA DA META':'ABAIXO DA META'}</div>
-      <div class="res-linha"><span>Ticket meta (captação)</span><b>${fmt(meta.ticket_meta)}</b></div>
+      <div style="font-size:11px;color:#607080;margin-bottom:8px;">Ticket = Mensalidade Líquida + Material Didático</div>
+      <div class="res-linha"><span>Ticket meta (captação hist.)</span><b>${fmt(meta.ticket_meta)}</b></div>
       <div class="res-linha"><span>Ticket alvo (+10%)</span><b>${fmt(meta.ticket_alvo)}</b></div>
-      <div class="res-linha"><span>Mensalidade proposta</span><b>${fmt(mensCalc)}</b></div>
-      <div class="res-linha"><span>Delta (proposta − alvo)</span><b style="color:${acima?'var(--verde)':'var(--vermelho)'}">${delta>=0?'+':''}${fmt(delta)} (${deltaPct>=0?'+':''}${deltaPct.toFixed(1)}%)</b></div>
+      <div class="res-linha"><span>Mensalidade líquida</span><b>${fmt(mensCalc)}</b></div>
+      ${material?`<div class="res-linha"><span>Material didático (fixo)</span><b>${fmt(material)}</b></div>`:''}
+      <div class="res-linha"><span><b>Ticket total proposto</b></span><b style="font-size:15px">${fmt(ticketTotal)}</b></div>
+      <div class="res-linha"><span>Delta (proposto − alvo)</span><b style="color:${acima?'var(--verde)':'var(--vermelho)'}">${delta>=0?'+':''}${fmt(delta)} (${deltaPct>=0?'+':''}${deltaPct.toFixed(1)}%)</b></div>
       ${sugestao}
     </div>`;
   }
@@ -391,13 +422,22 @@ function calcMens(){
     <div class="res-linha"><span>Série</span><b>${d.serie}${d.turno&&d.turno!=='Único'?' ('+d.turno+')':''}</b></div>
     <div class="res-linha"><span>Mensalidade tabela</span><b>${fmt(d.mensalidade)}</b></div>
     <div class="res-linha"><span>Desconto total</span><b>${totalDesc.toFixed(1)}%${comIrmao?' (incl. irmão)':''}</b></div>
-    <div class="res-sug"><div class="l">Mensalidade a ofertar</div><div class="v">${fmt(mensCalc)}</div></div>
+    <div class="res-sug"><div class="l">Mensalidade Líquida a Ofertar</div><div class="v">${fmt(mensCalc)}</div></div>
+    ${material?`<div style="background:#fff8e1;border-radius:8px;padding:10px 14px;margin:6px 0;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:13px;color:#7a5200;">📦 + Material Didático (fixo)</span>
+      <b style="font-size:15px;color:#7a5200;">${fmt(material)}</b>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border-radius:10px;padding:12px 14px;margin:4px 0 10px;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:13px;font-weight:700;">🎯 Ticket Total (mens. + mat.)</span>
+      <b style="font-size:20px;">${fmt(ticketTotal)}</b>
+    </div>`:''}
     <div class="res-block"><h4>📊 Resumo da Proposta</h4>
-      <div class="res-linha"><span>Anuidade proposta (12×)</span><b>${fmt(mensCalc*12)}</b></div>
+      <div class="res-linha"><span>Mensalidade líquida × 12</span><b>${fmt(mensCalc*12)}</b></div>
+      ${material?`<div class="res-linha"><span>Material × 12</span><b>${fmt(material*12)}</b></div>
+      <div class="res-linha"><span><b>Receita anual total</b></span><b>${fmt((mensCalc+material)*12)}</b></div>`:''}
       <div class="res-linha"><span>Desconto em R$/mês</span><b style="color:var(--cv)">- ${fmt(descReais)}</b></div>
       <div class="res-linha"><span>Desconto anual total</span><b style="color:var(--cv)">- ${fmt(descReais*12)}</b></div>
     </div>
-    ${d.material?`<div class="res-block"><h4>📦 Material Didático</h4><div class="res-linha"><span>Valor (tabela)</span><b>${fmt(d.material)}</b></div></div>`:''}
     ${metaHtml}`;
 }
 
