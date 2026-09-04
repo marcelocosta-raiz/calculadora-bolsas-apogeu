@@ -379,14 +379,15 @@ function calcMens(){
   const totalDesc=Math.min(100,descPct+(comIrmao?5:0));
   const mensCalc=d.mensalidade*(1-totalDesc/100);
   const descReais=d.mensalidade-mensCalc;
-  const material=d.material||0;
-  const ticketTotal=mensCalc+material; // Apogeu: ticket = mensalidade líquida + material
+  const materialAnual=d.material||0;
+  const material=materialAnual/12; // material é anual no dados.js; dividir por 12 para mensal
+  const ticketTotal=mensCalc+material; // Apogeu: ticket = mensalidade líquida + material mensal
 
   // Exibir caixa de material no painel esquerdo
   const matBox=document.getElementById('cm-material-box');
   if(material>0){
     matBox.style.display='block';
-    document.getElementById('cm-material-val').textContent=fmt(material)+'/mês';
+    document.getElementById('cm-material-val').textContent=fmt(materialAnual)+'/ano ('+fmt(material)+'/mês)';
   } else {
     matBox.style.display='none';
   }
@@ -433,8 +434,8 @@ function calcMens(){
     </div>`:''}
     <div class="res-block"><h4>📊 Resumo da Proposta</h4>
       <div class="res-linha"><span>Mensalidade líquida × 12</span><b>${fmt(mensCalc*12)}</b></div>
-      ${material?`<div class="res-linha"><span>Material × 12</span><b>${fmt(material*12)}</b></div>
-      <div class="res-linha"><span><b>Receita anual total</b></span><b>${fmt((mensCalc+material)*12)}</b></div>`:''}
+      ${material?`<div class="res-linha"><span>Material anual (fixo)</span><b>${fmt(materialAnual)}</b></div>
+      <div class="res-linha"><span><b>Receita anual total</b></span><b>${fmt(mensCalc*12+materialAnual)}</b></div>`:''}
       <div class="res-linha"><span>Desconto em R$/mês</span><b style="color:var(--cv)">- ${fmt(descReais)}</b></div>
       <div class="res-linha"><span>Desconto anual total</span><b style="color:var(--cv)">- ${fmt(descReais*12)}</b></div>
     </div>
