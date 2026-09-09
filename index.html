@@ -376,7 +376,7 @@ function calcMens(){
   }
   const descPct=parseFloat(document.getElementById('cm-desc').value)||0;
   const comIrmao=document.getElementById('cm-irmao').checked;
-  const totalDesc=Math.min(100,descPct+(comIrmao?5:0));
+  const totalDesc=comIrmao ? 100-(100-descPct)*0.95 : descPct;
   const mensCalc=d.mensalidade*(1-totalDesc/100);
   const descReais=d.mensalidade-mensCalc;
   const materialAnual=d.material||0;
