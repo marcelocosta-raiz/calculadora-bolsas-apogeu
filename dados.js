@@ -731,20 +731,14 @@ const REGRAS = {
     },
     {
       "id": "p2",
-      "label": "Até 31/10",
+      "label": "Até 30/11",
       "anuidade_desc": 0.08,
       "material_avista_desc": 0.05
     },
     {
       "id": "p3",
-      "label": "Até 30/11",
-      "anuidade_desc": 0.07,
-      "material_avista_desc": 0.05
-    },
-    {
-      "id": "p4",
-      "label": "A partir de 01/12",
-      "anuidade_desc": 0.06,
+      "label": "Até 31/12",
+      "anuidade_desc": 0.05,
       "material_avista_desc": 0.05
     }
   ],
