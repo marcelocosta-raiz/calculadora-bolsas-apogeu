@@ -727,22 +727,39 @@ const REGRAS = {
       "id": "p1",
       "label": "Até 30/09",
       "anuidade_desc": 0.1,
-      "material_avista_desc": 0.1
+      "material_avista_desc": 0.1,
+      "material_bo": 12,
+      "material_cc": 12,
+      "material_obs": "Último vencimento em ago/27"
     },
     {
       "id": "p2",
-      "label": "Até 30/11",
+      "label": "Até 31/10",
       "anuidade_desc": 0.08,
-      "material_avista_desc": 0.05
+      "material_avista_desc": 0.05,
+      "material_bo": 11,
+      "material_cc": 12,
+      "material_obs": "Último vencimento em ago/27"
     },
     {
       "id": "p3",
-      "label": "Até 31/12",
-      "anuidade_desc": 0.05,
-      "material_avista_desc": 0.05
+      "label": "Até 30/11",
+      "anuidade_desc": 0.07,
+      "material_avista_desc": 0.05,
+      "material_bo": 10,
+      "material_cc": 12,
+      "material_obs": "Último vencimento em ago/27"
+    },
+    {
+      "id": "p4",
+      "label": "A partir de 01/12",
+      "anuidade_desc": 0.06,
+      "material_avista_desc": 0.05,
+      "material_bo": 9,
+      "material_cc": 12,
+      "material_obs": "Último vencimento em ago/27"
     }
-  ],
-  "material_obs": "Material pago junto com a mensalidade (12x)."
+  ]
 };
 
 const METAS = [
