@@ -409,8 +409,7 @@ function calcMens(){
     metaHtml=`<div class="meta-box ${cls}">
       <div class="status">${icon} ${acima?'ACIMA DA META':'ABAIXO DA META'}</div>
       <div style="font-size:11px;color:#607080;margin-bottom:8px;">Ticket = Mensalidade Líquida + Material Didático</div>
-      <div class="res-linha"><span>Ticket meta (captação hist.)</span><b>${fmt(meta.ticket_meta)}</b></div>
-      <div class="res-linha"><span>Ticket alvo (+10%)</span><b>${fmt(meta.ticket_alvo)}</b></div>
+      <div class="res-linha"><span>🎯 Ticket Alvo</span><b>${fmt(meta.ticket_alvo)}</b></div>
       <div class="res-linha"><span>Mensalidade líquida</span><b>${fmt(mensCalc)}</b></div>
       ${material?`<div class="res-linha"><span>Material didático (fixo)</span><b>${fmt(material)}</b></div>`:''}
       <div class="res-linha"><span><b>Ticket total proposto</b></span><b style="font-size:15px">${fmt(ticketTotal)}</b></div>
