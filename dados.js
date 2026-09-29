@@ -767,491 +767,491 @@ const METAS = [
     "filial": "Global School Cidade Alta",
     "segmento": "EF1",
     "serie": "1º Ano",
-    "ticket_meta": 873.65,
-    "ticket_alvo": 961.02
+    "ticket_meta": 1331.05,
+    "ticket_alvo": 1464.15
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EF1",
     "serie": "2º Ano",
-    "ticket_meta": 967.07,
-    "ticket_alvo": 1063.78
+    "ticket_meta": 1360.55,
+    "ticket_alvo": 1496.61
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EF1",
     "serie": "3º Ano",
-    "ticket_meta": 881.37,
-    "ticket_alvo": 969.51
+    "ticket_meta": 1360.55,
+    "ticket_alvo": 1496.61
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EF1",
     "serie": "4º Ano",
-    "ticket_meta": 899.96,
-    "ticket_alvo": 989.96
+    "ticket_meta": 1360.55,
+    "ticket_alvo": 1496.61
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EF1",
     "serie": "5º Ano",
-    "ticket_meta": 922.58,
-    "ticket_alvo": 1014.84
+    "ticket_meta": 1360.55,
+    "ticket_alvo": 1496.61
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EF2",
     "serie": "6º Ano",
-    "ticket_meta": 931.96,
-    "ticket_alvo": 1025.16
+    "ticket_meta": 1290.03,
+    "ticket_alvo": 1419.03
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EF2",
     "serie": "7º Ano",
-    "ticket_meta": 952.13,
-    "ticket_alvo": 1047.34
+    "ticket_meta": 1290.03,
+    "ticket_alvo": 1419.03
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EF2",
     "serie": "8º Ano",
-    "ticket_meta": 964.9,
-    "ticket_alvo": 1061.39
+    "ticket_meta": 1290.03,
+    "ticket_alvo": 1419.03
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EF2",
     "serie": "9º Ano",
-    "ticket_meta": 885.36,
-    "ticket_alvo": 973.9
+    "ticket_meta": 1290.03,
+    "ticket_alvo": 1419.03
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EI",
     "serie": "Infantil 1",
-    "ticket_meta": 965.44,
-    "ticket_alvo": 1061.98
+    "ticket_meta": 1383.44,
+    "ticket_alvo": 1521.78
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EI",
     "serie": "Infantil 2",
-    "ticket_meta": 963.01,
-    "ticket_alvo": 1059.31
+    "ticket_meta": 1383.44,
+    "ticket_alvo": 1521.78
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EI",
     "serie": "Infantil 3",
-    "ticket_meta": 958.92,
-    "ticket_alvo": 1054.81
+    "ticket_meta": 1383.44,
+    "ticket_alvo": 1521.78
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EI",
     "serie": "Infantil 4",
-    "ticket_meta": 955.74,
-    "ticket_alvo": 1051.31
+    "ticket_meta": 1383.44,
+    "ticket_alvo": 1521.78
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EI",
     "serie": "Infantil 5",
-    "ticket_meta": 954.86,
-    "ticket_alvo": 1050.35
+    "ticket_meta": 1383.44,
+    "ticket_alvo": 1521.78
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EM",
     "serie": "1ª Série",
-    "ticket_meta": 978.87,
-    "ticket_alvo": 1076.76
+    "ticket_meta": 1408.83,
+    "ticket_alvo": 1549.71
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EM",
     "serie": "2ª Série",
-    "ticket_meta": 967.81,
-    "ticket_alvo": 1064.59
+    "ticket_meta": 1408.83,
+    "ticket_alvo": 1549.71
   },
   {
     "filial": "Global School Cidade Alta",
     "segmento": "EM",
     "serie": "3ª Série",
-    "ticket_meta": 936.87,
-    "ticket_alvo": 1030.56
+    "ticket_meta": 1408.83,
+    "ticket_alvo": 1549.71
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF1",
     "serie": "1º Ano",
-    "ticket_meta": 883.78,
-    "ticket_alvo": 972.16
+    "ticket_meta": 1243.09,
+    "ticket_alvo": 1367.4
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF1",
     "serie": "2º Ano",
-    "ticket_meta": 900.29,
-    "ticket_alvo": 990.32
+    "ticket_meta": 1272.59,
+    "ticket_alvo": 1399.85
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF1",
     "serie": "3º Ano",
-    "ticket_meta": 870.97,
-    "ticket_alvo": 958.07
+    "ticket_meta": 1272.59,
+    "ticket_alvo": 1399.85
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF1",
     "serie": "4º Ano",
-    "ticket_meta": 859.34,
-    "ticket_alvo": 945.27
+    "ticket_meta": 1272.59,
+    "ticket_alvo": 1399.85
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF1",
     "serie": "5º Ano",
-    "ticket_meta": 799.4,
-    "ticket_alvo": 879.34
+    "ticket_meta": 1272.59,
+    "ticket_alvo": 1399.85
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF2",
     "serie": "6º Ano",
-    "ticket_meta": 904.38,
-    "ticket_alvo": 994.82
+    "ticket_meta": 1376.74,
+    "ticket_alvo": 1514.41
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF2",
     "serie": "7º Ano",
-    "ticket_meta": 924.7,
-    "ticket_alvo": 1017.17
+    "ticket_meta": 1376.74,
+    "ticket_alvo": 1514.41
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF2",
     "serie": "8º Ano",
-    "ticket_meta": 978.64,
-    "ticket_alvo": 1076.5
+    "ticket_meta": 1376.74,
+    "ticket_alvo": 1514.41
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EF2",
     "serie": "9º Ano",
-    "ticket_meta": 885.27,
-    "ticket_alvo": 973.8
+    "ticket_meta": 1376.74,
+    "ticket_alvo": 1514.41
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EI",
     "serie": "Berçário",
-    "ticket_meta": 891.88,
-    "ticket_alvo": 981.07
+    "ticket_meta": 1309.88,
+    "ticket_alvo": 1440.87
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EI",
     "serie": "Infantil 1",
-    "ticket_meta": 1006.33,
-    "ticket_alvo": 1106.96
+    "ticket_meta": 1309.88,
+    "ticket_alvo": 1440.87
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EI",
     "serie": "Infantil 2",
-    "ticket_meta": 964.52,
-    "ticket_alvo": 1060.97
+    "ticket_meta": 1309.88,
+    "ticket_alvo": 1440.87
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EI",
     "serie": "Infantil 3",
-    "ticket_meta": 981.81,
-    "ticket_alvo": 1079.99
+    "ticket_meta": 1309.88,
+    "ticket_alvo": 1440.87
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EI",
     "serie": "Infantil 4",
-    "ticket_meta": 1001.57,
-    "ticket_alvo": 1101.73
+    "ticket_meta": 1309.88,
+    "ticket_alvo": 1440.87
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EI",
     "serie": "Infantil 5",
-    "ticket_meta": 1026.11,
-    "ticket_alvo": 1128.72
+    "ticket_meta": 1309.88,
+    "ticket_alvo": 1440.87
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EM",
     "serie": "1ª Série",
-    "ticket_meta": 1015.96,
-    "ticket_alvo": 1117.56
+    "ticket_meta": 1432.68,
+    "ticket_alvo": 1575.95
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EM",
     "serie": "2ª Série",
-    "ticket_meta": 964.82,
-    "ticket_alvo": 1061.3
+    "ticket_meta": 1432.68,
+    "ticket_alvo": 1575.95
   },
   {
     "filial": "Global School Ferreira Guimarães",
     "segmento": "EM",
     "serie": "3ª Série",
-    "ticket_meta": 1108.99,
-    "ticket_alvo": 1219.89
+    "ticket_meta": 1432.68,
+    "ticket_alvo": 1575.95
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF1",
     "serie": "1º Ano",
-    "ticket_meta": 459.8,
-    "ticket_alvo": 505.78
+    "ticket_meta": 958.96,
+    "ticket_alvo": 1054.86
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF1",
     "serie": "2º Ano",
-    "ticket_meta": 610.39,
-    "ticket_alvo": 671.43
+    "ticket_meta": 988.38,
+    "ticket_alvo": 1087.22
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF1",
     "serie": "3º Ano",
-    "ticket_meta": 640.34,
-    "ticket_alvo": 704.37
+    "ticket_meta": 988.38,
+    "ticket_alvo": 1087.22
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF1",
     "serie": "4º Ano",
-    "ticket_meta": 528.94,
-    "ticket_alvo": 581.83
+    "ticket_meta": 988.38,
+    "ticket_alvo": 1087.22
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF1",
     "serie": "5º Ano",
-    "ticket_meta": 602.68,
-    "ticket_alvo": 662.95
+    "ticket_meta": 988.38,
+    "ticket_alvo": 1087.22
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF2",
     "serie": "6º Ano",
-    "ticket_meta": 621.83,
-    "ticket_alvo": 684.01
+    "ticket_meta": 997.7,
+    "ticket_alvo": 1097.47
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF2",
     "serie": "7º Ano",
-    "ticket_meta": 648.46,
-    "ticket_alvo": 713.31
+    "ticket_meta": 997.7,
+    "ticket_alvo": 1097.47
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF2",
     "serie": "8º Ano",
-    "ticket_meta": 576.63,
-    "ticket_alvo": 634.29
+    "ticket_meta": 997.7,
+    "ticket_alvo": 1097.47
   },
   {
     "filial": "Santo Antônio I",
     "segmento": "EF2",
     "serie": "9º Ano",
-    "ticket_meta": 638.28,
-    "ticket_alvo": 702.11
+    "ticket_meta": 997.7,
+    "ticket_alvo": 1097.47
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "CL",
     "serie": "AFA / Naval",
-    "ticket_meta": 175.99,
-    "ticket_alvo": 193.59
+    "ticket_meta": 492.83,
+    "ticket_alvo": 542.11
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "CL",
     "serie": "CN / EPCAr",
-    "ticket_meta": 73.92,
-    "ticket_alvo": 81.31
+    "ticket_meta": 398.42,
+    "ticket_alvo": 438.26
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "CL",
     "serie": "ESA",
-    "ticket_meta": 100.9,
-    "ticket_alvo": 110.99
+    "ticket_meta": 275.99,
+    "ticket_alvo": 303.59
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "CL",
     "serie": "EsPCEx",
-    "ticket_meta": 152.53,
-    "ticket_alvo": 167.78
+    "ticket_meta": 487.11,
+    "ticket_alvo": 535.82
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "CL",
     "serie": "IME / ITA",
-    "ticket_meta": 88.0,
-    "ticket_alvo": 96.8
+    "ticket_meta": 488.16,
+    "ticket_alvo": 536.98
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "CL",
     "serie": "Medicina",
-    "ticket_meta": 692.23,
-    "ticket_alvo": 761.45
+    "ticket_meta": 1218.15,
+    "ticket_alvo": 1339.97
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "CL",
     "serie": "Pré-Vestibular",
-    "ticket_meta": 192.83,
-    "ticket_alvo": 212.11
+    "ticket_meta": 718.75,
+    "ticket_alvo": 790.63
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "EM",
     "serie": "1ª Série",
-    "ticket_meta": 676.37,
-    "ticket_alvo": 744.01
+    "ticket_meta": 1169.03,
+    "ticket_alvo": 1285.93
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "EM",
     "serie": "2ª Série",
-    "ticket_meta": 752.65,
-    "ticket_alvo": 827.92
+    "ticket_meta": 1169.03,
+    "ticket_alvo": 1285.93
   },
   {
     "filial": "Santo Antônio II",
     "segmento": "EM",
     "serie": "3ª Série",
-    "ticket_meta": 664.93,
-    "ticket_alvo": 731.42
+    "ticket_meta": 1169.03,
+    "ticket_alvo": 1285.93
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF1",
     "serie": "1º Ano",
-    "ticket_meta": 307.12,
-    "ticket_alvo": 337.83
+    "ticket_meta": 725.62,
+    "ticket_alvo": 798.18
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF1",
     "serie": "2º Ano",
-    "ticket_meta": 285.78,
-    "ticket_alvo": 314.36
+    "ticket_meta": 755.04,
+    "ticket_alvo": 830.54
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF1",
     "serie": "3º Ano",
-    "ticket_meta": 276.25,
-    "ticket_alvo": 303.88
+    "ticket_meta": 755.04,
+    "ticket_alvo": 830.54
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF1",
     "serie": "4º Ano",
-    "ticket_meta": 312.22,
-    "ticket_alvo": 343.44
+    "ticket_meta": 755.04,
+    "ticket_alvo": 830.54
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF1",
     "serie": "5º Ano",
-    "ticket_meta": 389.43,
-    "ticket_alvo": 428.37
+    "ticket_meta": 755.04,
+    "ticket_alvo": 830.54
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF2",
     "serie": "6º Ano",
-    "ticket_meta": 377.3,
-    "ticket_alvo": 415.03
+    "ticket_meta": 801.28,
+    "ticket_alvo": 881.41
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF2",
     "serie": "7º Ano",
-    "ticket_meta": 429.79,
-    "ticket_alvo": 472.77
+    "ticket_meta": 801.28,
+    "ticket_alvo": 881.41
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF2",
     "serie": "8º Ano",
-    "ticket_meta": 394.38,
-    "ticket_alvo": 433.82
+    "ticket_meta": 801.28,
+    "ticket_alvo": 881.41
   },
   {
     "filial": "Zona Norte",
     "segmento": "EF2",
     "serie": "9º Ano",
-    "ticket_meta": 450.27,
-    "ticket_alvo": 495.3
+    "ticket_meta": 801.28,
+    "ticket_alvo": 881.41
   },
   {
     "filial": "Zona Norte",
     "segmento": "EI",
     "serie": "Infantil 2",
-    "ticket_meta": 239.83,
-    "ticket_alvo": 263.81
+    "ticket_meta": 625.25,
+    "ticket_alvo": 687.78
   },
   {
     "filial": "Zona Norte",
     "segmento": "EI",
     "serie": "Infantil 3",
-    "ticket_meta": 257.22,
-    "ticket_alvo": 282.94
+    "ticket_meta": 625.25,
+    "ticket_alvo": 687.78
   },
   {
     "filial": "Zona Norte",
     "segmento": "EI",
     "serie": "Infantil 4",
-    "ticket_meta": 299.6,
-    "ticket_alvo": 329.56
+    "ticket_meta": 625.25,
+    "ticket_alvo": 687.78
   },
   {
     "filial": "Zona Norte",
     "segmento": "EI",
     "serie": "Infantil 5",
-    "ticket_meta": 320.09,
-    "ticket_alvo": 352.1
+    "ticket_meta": 625.25,
+    "ticket_alvo": 687.78
   },
   {
     "filial": "Zona Norte",
     "segmento": "EM",
     "serie": "1ª Série",
-    "ticket_meta": 487.61,
-    "ticket_alvo": 536.37
+    "ticket_meta": 905.95,
+    "ticket_alvo": 996.55
   },
   {
     "filial": "Zona Norte",
     "segmento": "EM",
     "serie": "2ª Série",
-    "ticket_meta": 562.72,
-    "ticket_alvo": 618.99
+    "ticket_meta": 905.95,
+    "ticket_alvo": 996.55
   },
   {
     "filial": "Zona Norte",
     "segmento": "EM",
     "serie": "3ª Série",
-    "ticket_meta": 555.16,
-    "ticket_alvo": 610.68
+    "ticket_meta": 905.95,
+    "ticket_alvo": 996.55
   }
 ];
 
