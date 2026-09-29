@@ -1257,7 +1257,6 @@ const METAS = [
 
 const PORTAS = [
   {
-    "data": "19/09/2026",
     "label": "1º Bolsão de Matrículas",
     "participantes": [
       "Global School Cidade Alta",
@@ -1269,7 +1268,6 @@ const PORTAS = [
     "fora": []
   },
   {
-    "data": "03/10/2026",
     "label": "2º Bolsão de Matrículas",
     "participantes": [
       "Global School Cidade Alta",
@@ -1281,7 +1279,6 @@ const PORTAS = [
     "fora": []
   },
   {
-    "data": "10/10/2026",
     "label": "3º Bolsão de Matrículas",
     "participantes": [
       "Global School Cidade Alta",
@@ -1293,7 +1290,6 @@ const PORTAS = [
     "fora": []
   },
   {
-    "data": "24/10/2026",
     "label": "4º Bolsão de Matrículas",
     "participantes": [
       "Global School Cidade Alta",
@@ -1305,7 +1301,6 @@ const PORTAS = [
     "fora": []
   },
   {
-    "data": "31/10/2026",
     "label": "5º Bolsão de Matrículas",
     "participantes": [
       "Global School Cidade Alta",
@@ -1317,7 +1312,6 @@ const PORTAS = [
     "fora": []
   },
   {
-    "data": "28/11/2026",
     "label": "6º Bolsão de Matrículas",
     "participantes": [
       "Global School Cidade Alta",
@@ -1329,7 +1323,6 @@ const PORTAS = [
     "fora": []
   },
   {
-    "data": "12/12/2026",
     "label": "7º Bolsão de Matrículas",
     "participantes": [
       "Global School Cidade Alta",
