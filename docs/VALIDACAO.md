@@ -11,4 +11,5 @@
 - JavaScript: sintaxe, dados carregados, equivalência de cursos, ausência de meta, sete bolsões sem datas, comparação com os pisos e ausência de campos pessoais no agregado.
 - Build em dist publica somente index.html, dados.js, boletins.js e metas.js.
 - Browser local: aba, filtros, cursos livres, cálculo de bolsa de 50%, layout 390 px sem overflow do corpo e nenhuma exceção JavaScript nas interações testadas.
+- Varredura final no browser: 70 opções de negociação nas cinco unidades, desconto de 75%, alvo e recomendação presentes, sem NaN/undefined ou exceções. Filtro de alertas vazio consistente com a carga; Berçário presente em EI da Global Ferreira Guimarães.
 - Importação é local por comando explícito. Monitoramento automático e envio de e-mail não estão ativos nesta entrega.
