@@ -1,0 +1,11 @@
+{
+  "name": "calculadora-bolsas-apogeu",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/verify.mjs && node scripts/build.mjs",
+    "test": "node scripts/verify.mjs",
+    "typecheck": "node --check metas.js && node scripts/verify.mjs",
+    "lint": "node --check metas.js && node --check scripts/build.mjs && node --check scripts/verify.mjs"
+  },
+  "engines": {"node": "24.x"}
+}
