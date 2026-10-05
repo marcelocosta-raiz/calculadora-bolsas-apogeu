@@ -22,6 +22,7 @@ assert.equal(report.noMeta, null);
 assert.ok(report.courses > 0);
 assert.equal(report.missingComparisons, 0);
 const data = JSON.parse(readFileSync('boletins.json','utf8'));
+assert.deepEqual(JSON.parse(vm.runInContext('JSON.stringify(BOLETINS)',context)),data);
 assert.equal(report.included, Object.values(data.status_alunos).reduce((sum,n)=>sum+n,0));
 assert.match(data.data_ficha, /^\d{4}-\d{2}-\d{2}$/);
 assert.equal(data.email_ativo, false);
