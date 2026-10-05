@@ -7,6 +7,8 @@
 <script src="dados.js"></script>
 <script src="boletins.js"></script>
 <script src="metas.js"></script>
+<script src="pricing.js"></script>
+<script src="calculadora.js"></script>
 <style>
 :root {
   --c1:#1437CC; --c2:#23AAE0; --cv:#FFAC1A;
@@ -32,6 +34,12 @@ select:focus{outline:none;border-color:var(--c2);}
 .tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
 .tab{padding:10px 20px;background:#fff;border:2px solid var(--borda);border-radius:10px;cursor:pointer;font-weight:700;font-size:14px;transition:.2s;}
 .tab.ativo{background:var(--c1);color:#fff;border-color:var(--c1);}
+a.tab{text-decoration:none;color:inherit;}
+a.tab.ativo{color:#fff;}
+.meta-status.neutro{color:#607080;}
+.res-linha b{white-space:nowrap;}
+.calc-grid>*{min-width:0;}
+select{max-width:100%;}
 .tab:hover:not(.ativo){border-color:var(--c2);}
 .painel{display:none;}
 .painel.ativo{display:block;}
@@ -97,15 +105,6 @@ tr:hover td{background:#d0ebf8;}
 .prazo-item:last-child{border-bottom:none;}
 .prazo-item b{color:var(--c1);}
 .tag-destaque{background:var(--cv);color:#fff;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:800;}
-/* bolsões */
-.bolsoes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
-.bolsao-card{background:#fff;border-radius:14px;overflow:hidden;border:2px solid var(--borda);box-shadow:0 2px 8px rgba(0,0,0,.05);}
-.bolsao-head{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;padding:16px 20px;}
-.bolsao-head .num{font-size:12px;opacity:.85;text-transform:uppercase;letter-spacing:1px;}
-.bolsao-head .data-grande{font-size:22px;font-weight:800;margin:4px 0;}
-.bolsao-head .dia-semana{font-size:13px;opacity:.9;}
-.bolsao-body{padding:14px 18px;font-size:13px;}
-.unid-chip{display:inline-block;background:#dff0fb;color:var(--c1);border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700;margin:3px 2px;}
 .info-box{background:#dff0fb;border-radius:10px;padding:11px 16px;margin-bottom:14px;font-size:13px;color:var(--c1);border-left:4px solid var(--c1);}
 footer{text-align:center;padding:24px;font-size:12px;color:#8a9ab0;}
 .table-scroll{overflow-x:auto;max-width:100%;}
@@ -153,10 +152,9 @@ button.tab{font-family:inherit;min-height:44px;}
   <div class="tabs">
     <div class="tab ativo" onclick="trocarTab('tabela',this)">💰 Tabela de Valores</div>
     <div class="tab" onclick="trocarTab('prazos',this)">📅 Prazos & Condições</div>
-    <div class="tab" onclick="trocarTab('calc',this)">🧮 Calculadora</div>
-    <button type="button" class="tab" onclick="trocarTab('metas',this)">Tickets Metas</button>
+    <a class="tab" data-page="calc" href="calculadora.html">Calculadora de bolsas</a>
+    <a class="tab" data-page="metas" href="tickets.html">Tickets por série</a>
     <div class="tab" onclick="trocarTab('material',this)">📦 Material Didático</div>
-    <div class="tab" onclick="trocarTab('bolsoes',this)">🎯 Bolsões</div>
   </div>
 
   <!-- ── TABELA DE VALORES ── -->
@@ -184,7 +182,6 @@ button.tab{font-family:inherit;min-height:44px;}
       <table>
         <thead><tr><th>Condição</th><th>Desconto</th><th>Observação</th></tr></thead>
         <tbody>
-          <tr><td>À vista até 30/09</td><td class="money">10%</td><td>Melhor condição do ciclo</td></tr>
           <tr><td>À vista a partir de 01/10</td><td class="money">5%</td><td>Válido para 31/10, 30/11 e 01/12+</td></tr>
           <tr><td>Parcelado (12x)</td><td class="money">—</td><td>Junto com a mensalidade, sem desconto</td></tr>
         </tbody>
@@ -198,42 +195,19 @@ button.tab{font-family:inherit;min-height:44px;}
   <!-- ── CALCULADORA ── -->
   <div id="painel-calc" class="painel">
     <div class="card">
-      <h2>Calculadora de Negociação — Mensalidade 2027</h2>
-      <p style="font-size:12px;color:#607080;margin-bottom:16px;">Informe o desconto na mensalidade. O material didático é fixo (sem desconto nesta modalidade) e compõe o ticket total. Meta: Mensalidade Líquida + Material ≥ Ticket Alvo.</p>
+      <h2>Calculadora de bolsas</h2>
+      <p id="calc-data" class="hint"></p>
+      <p class="hint">Informe o valor total mensal que a família pagará, já incluindo o material didático.</p>
       <div class="calc-grid">
         <div class="calc-inputs">
-          <div class="input-group">
-            <div class="campo-label">🎓 Série / Curso</div>
+          <label class="input-group" for="cm-serie"><span class="campo-label">Série / Curso</span>
             <select id="cm-serie" onchange="onSerieChange()"><option value="">— selecione —</option></select>
-            <div class="serie-info" id="cm-info"></div>
-          </div>
-          <div class="input-group">
-            <div class="campo-label">Desconto — Mensalidade</div>
-            <div class="input-dual">
-              <span class="pfx">%</span>
-              <input type="number" id="cm-desc" value="0" min="0" max="100" step="0.01" oninput="onDescPctChange()">
-              <span class="ou">ou</span>
-              <span class="pfx">R$</span>
-              <input type="number" id="cm-desc-val" min="0" step="0.01" placeholder="valor final" oninput="onDescValChange()">
-            </div>
-          </div>
-          <label class="chk">
-            <input type="checkbox" id="cm-irmao" onchange="calcMens()">
-            Desconto de irmão (+5%)
           </label>
-          <div id="cm-material-box" style="display:none;background:#fff8e1;border:2px solid var(--cv);border-radius:10px;padding:12px 14px;margin-top:4px;">
-            <div style="font-size:11px;font-weight:700;color:#7a5200;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">📦 Material Didático — fixo (parcelado em 12x)</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <span style="font-size:13px;color:#555;">Valor do material</span>
-              <b id="cm-material-val" style="font-size:16px;color:#7a5200;">—</b>
-            </div>
-            <div style="font-size:11px;color:#9a7a00;margin-top:4px;">Pago junto com a mensalidade — sem desconto nesta modalidade</div>
-          </div>
-          <p class="hint">Apogeu: 12 mensalidades. Ticket total = Mensalidade Líquida + Material.</p>
+          <label class="input-group" for="cm-total"><span class="campo-label">Ticket total proposto (mensalidade + MD)</span>
+            <div class="input-dual"><span class="pfx">R$</span><input type="number" id="cm-total" min="0" step="0.01" oninput="calcMens()" disabled></div>
+          </label>
         </div>
-        <div class="calc-result" id="cm-result">
-          <p style="color:#8a9ab0;font-size:13px;">Selecione uma série para calcular.</p>
-        </div>
+        <div class="calc-result" id="cm-result"><p>Selecione uma série para calcular.</p></div>
       </div>
     </div>
   </div>
@@ -243,18 +217,16 @@ button.tab{font-family:inherit;min-height:44px;}
     <div class="card">
       <h2>Tickets Metas — Captação 2027</h2>
       <p id="metas-data" class="hint"></p>
-      <div class="info-box">O ticket inclui mensalidade líquida + MD mensal. O alvo recupera a média no maior horizonte entre o saldo de captação e metade da meta de alunos, com mínimo de 10% acima da meta-base. Alvos da nova base não diminuem.</div>
+      <div class="info-box">Valores mensais com material didático. O ticket projetado orienta as próximas propostas.</div>
       <div class="metas-filtros">
         <label for="metas-segmento">Segmento<select id="metas-segmento" onchange="atualizarFiltrosMetas()"><option value="">Todos</option><option>EI</option><option>EF1</option><option>EF2</option><option>EM</option><option>CL</option></select></label>
         <label for="metas-serie">Série<select id="metas-serie" onchange="renderMetas()"><option value="">Todas as séries</option></select></label>
-        <label class="chk"><input type="checkbox" id="metas-alertas" onchange="renderMetas()">Somente revisão necessária</label>
       </div>
       <p id="metas-resumo" role="status" aria-live="polite"></p>
       <div class="table-scroll" tabindex="0" aria-label="Metas por série: role horizontalmente para todas as colunas">
-        <table><thead><tr><th>Série</th><th>Alunos / meta</th><th>Meta-base</th><th>Ticket realizado</th><th>Próximas matrículas</th><th>Ticket recomendado</th><th>Limite +30%</th><th>Situação</th></tr></thead><tbody id="metas-body"></tbody></table>
+        <table><thead><tr><th>Série</th><th>Alunos / meta</th><th>Ticket meta</th><th>Ticket médio atual</th><th>Ticket projetado para recuperar a meta</th><th>Situação</th></tr></thead><tbody id="metas-body"></tbody></table>
       </div>
-      <p class="hint">Excluídos: contrato inativo, sem parcela gerada, bolsa zero ou financeiro pendente de revisão. Séries sem meta não entram na negociação. O Berçário aparece nas metas; preço cheio ainda não cadastrado para simulação.</p>
-      <p class="hint">Revisão necessária: alvo a partir de 30% acima da meta-base. O alerta não limita automaticamente o preço. Notificações por e-mail ainda não ativadas.</p>
+      <p class="hint">Excluídos: contrato inativo, sem parcela gerada, bolsa zero ou financeiro pendente de revisão. Séries sem meta não entram na negociação. Alunos inclui matriculados e pré-matriculados com financeiro válido.</p>
     </div>
   </div>
 
@@ -266,14 +238,7 @@ button.tab{font-family:inherit;min-height:44px;}
     </div>
   </div>
 
-  <!-- ── BOLSÕES ── -->
-  <div id="painel-bolsoes" class="painel">
-    <div class="card">
-      <h2>Bolsões de Matrículas 2027</h2>
-      <div class="info-box">🎯 Todas as unidades participam de todos os bolsões.</div>
-      <div class="bolsoes-grid" id="bolsoes-grid"></div>
-    </div>
-  </div>
+
 </div>
 <footer>Apogeu &middot; Ciclo de Matrículas 2027 &middot; Dashboard interno &middot; Uso exclusivo das equipes de admissão.</footer>
 
@@ -311,6 +276,7 @@ function onUnidadeChange(){
   populateCalcSeries();
   renderMaterial();
   atualizarFiltrosMetas();
+  document.querySelectorAll('a[data-page]').forEach(a=>{a.href=(a.dataset.page==='calc'?'calculadora.html':'tickets.html')+'?unidade='+encodeURIComponent(u);});
 }
 
 function onFiltroChange(){
@@ -338,13 +304,12 @@ function renderTabela(){
 // ── PRAZOS ─────────────────────────────────────────────────────
 function renderPrazos(){
   const grid = document.getElementById('prazos-grid');
-  grid.innerHTML = REGRAS.prazos.map((p,i)=>{
+  grid.innerHTML = REGRAS.prazos.map(p=>{
     const anuDesc = (p.anuidade_desc*100).toFixed(0)+'%';
     const matDesc = (p.material_avista_desc*100).toFixed(0)+'%';
-    const destaque = i===0 ? '<span class="tag-destaque">Melhor condição</span>' : '';
     return `<div class="prazo-card">
       <div class="prazo-head">
-        <div class="data">${p.label} ${destaque}</div>
+        <div class="data">${p.label}</div>
         <div class="desc">Desconto na anuidade</div>
       </div>
       <div class="prazo-body">
@@ -357,123 +322,6 @@ function renderPrazos(){
 }
 
 // ── CALCULADORA ────────────────────────────────────────────────
-function populateCalcSeries(){
-  const u=getUnidade(); const sel=document.getElementById('cm-serie');
-  sel.innerHTML='<option value="">— selecione —</option>';
-  SEG_ORDER.forEach(seg=>{
-    const rows=DADOS.filter(d=>d.unidade===u&&d.segmento===seg&&buscarMeta(d));
-    if(!rows.length)return;
-    const grp=document.createElement('optgroup'); grp.label=seg;
-    rows.forEach(d=>{
-      const o=document.createElement('option');
-      o.value=`${d.segmento}|${d.serie}|${d.turno||''}`;
-      const ticket=d.material?`mens. ${fmt(d.mensalidade)} + MD ${fmt(d.material/12)}/mês`:`${fmt(d.mensalidade)}/mês`;
-      o.textContent=`${d.serie}${d.turno&&d.turno!=='Único'?' ('+d.turno+')':''} — ${ticket}`;
-      grp.appendChild(o);
-    });
-    sel.appendChild(grp);
-  });
-  document.getElementById('cm-result').innerHTML='<p style="color:#8a9ab0;font-size:13px;">Selecione uma série para calcular.</p>';
-}
-
-function getDado(){
-  const v=document.getElementById('cm-serie').value; if(!v)return null;
-  const [seg,serie,turno]=v.split('|');
-  return DADOS.find(d=>d.unidade===getUnidade()&&d.segmento===seg&&d.serie===serie&&(d.turno||'')===(turno||''));
-}
-
-function getMeta(d){
-  return buscarMeta(d);
-}
-
-function onSerieChange(){
-  const d=getDado();
-  if(d){ const p=parseFloat(document.getElementById('cm-desc').value)||0; document.getElementById('cm-desc-val').value=p>0?(d.mensalidade*(1-p/100)).toFixed(2):''; }
-  calcMens();
-}
-function onDescPctChange(){ const d=getDado(); if(d){ const p=Math.min(100,Math.max(0,parseFloat(document.getElementById('cm-desc').value)||0)); document.getElementById('cm-desc-val').value=(d.mensalidade*(1-p/100)).toFixed(2); } calcMens(); }
-function onDescValChange(){ const d=getDado(); if(d){ const v=parseFloat(document.getElementById('cm-desc-val').value)||0; document.getElementById('cm-desc').value=Math.min(100,Math.max(0,(1-v/d.mensalidade)*100)).toFixed(2); } calcMens(); }
-
-function calcMens(){
-  const d=getDado();
-  if(!d){
-    document.getElementById('cm-result').innerHTML='<p style="color:#8a9ab0;font-size:13px;">Selecione uma série para calcular.</p>';
-    document.getElementById('cm-material-box').style.display='none';
-    return;
-  }
-  const descPct=Math.min(100,Math.max(0,parseFloat(document.getElementById('cm-desc').value)||0));
-  const comIrmao=document.getElementById('cm-irmao').checked;
-  const totalDesc=comIrmao ? 100-(100-descPct)*0.95 : descPct;
-  const mensCalc=d.mensalidade*(1-totalDesc/100);
-  const descReais=d.mensalidade-mensCalc;
-  const materialAnual=d.material||0;
-  const material=materialAnual/12; // material é anual no dados.js; dividir por 12 para mensal
-  const ticketTotal=mensCalc+material; // Apogeu: ticket = mensalidade líquida + material mensal
-
-  // Exibir caixa de material no painel esquerdo
-  const matBox=document.getElementById('cm-material-box');
-  if(material>0){
-    matBox.style.display='block';
-    document.getElementById('cm-material-val').textContent=fmt(materialAnual)+'/ano ('+fmt(material)+'/mês)';
-  } else {
-    matBox.style.display='none';
-  }
-
-  document.getElementById('cm-info').textContent=`Segmento: ${d.segmento} | Turno: ${d.turno||'Único'} | Anuidade: ${fmt(d.anuidade)}`;
-
-  const meta=getMeta(d);
-  let metaHtml='';
-  if(meta){
-    const acima=ticketTotal>=meta.ticket_alvo;
-    const delta=ticketTotal-meta.ticket_alvo;
-    const deltaPct=((ticketTotal/meta.ticket_alvo)-1)*100;
-    const cls=acima?'acima':'abaixo';
-    const icon=acima?'✅':'⚠️';
-    // Sugestão reversa: qual mensalidade mínima faz ticketTotal >= ticket_alvo
-    const mensSugerida=meta.ticket_alvo-material;
-    const sugestao = !acima ? `<div class="res-linha"><span>💡 Mensalidade mín. p/ atingir alvo</span><b style="color:var(--verde)">${fmt(Math.max(0,mensSugerida))}</b></div>
-      <div class="res-linha"><span>Ticket total mínimo (mens.+mat.)</span><b style="color:var(--verde)">${fmt(meta.ticket_alvo)}</b></div>` : '';
-    metaHtml=`<div class="meta-box ${cls}">
-      ${meta.revisao ? '<div class="meta-status revisar">Revisão necessária: alvo ≥ meta-base +30%</div>' : ''}
-      ${meta.ticket_alvo>d.mensalidade+material ? '<div class="meta-status revisar">Alvo acima do preço cheio. Avaliação da gestão necessária; recuperação inviável neste preço.</div>' : ''}
-      <div class="res-linha"><span>Meta-base de captação</span><b>${fmt(meta.ticket_meta)}</b></div>
-      <div class="res-linha"><span>Ticket médio realizado</span><b>${moedaMeta(meta.ticket_realizado)}</b></div>
-      <div class="res-linha"><span>Alunos elegíveis / próximas matrículas</span><b>${meta.alunos} / ${meta.horizonte}</b></div>
-      <div class="res-linha"><span>Mensalidade líquida recomendada (MD à parte)</span><b>${fmt(Math.max(0,Math.ceil((meta.ticket_alvo-material)*100)/100))}</b></div>
-      <div class="status">${icon} ${acima?'ACIMA DA META':'ABAIXO DA META'}</div>
-      <div style="font-size:11px;color:#607080;margin-bottom:8px;">Ticket = Mensalidade Líquida + Material Didático</div>
-      <div class="res-linha"><span>🎯 Ticket Alvo</span><b>${fmt(meta.ticket_alvo)}</b></div>
-      <div class="res-linha"><span>Mensalidade líquida</span><b>${fmt(mensCalc)}</b></div>
-      ${material?`<div class="res-linha"><span>Material didático (fixo)</span><b>${fmt(material)}</b></div>`:''}
-      <div class="res-linha"><span><b>Ticket total proposto</b></span><b style="font-size:15px">${fmt(ticketTotal)}</b></div>
-      <div class="res-linha"><span>Delta (proposto − alvo)</span><b style="color:${acima?'var(--verde)':'var(--vermelho)'}">${delta>=0?'+':''}${fmt(delta)} (${deltaPct>=0?'+':''}${deltaPct.toFixed(1)}%)</b></div>
-      ${sugestao}
-    </div>`;
-  }
-
-  document.getElementById('cm-result').innerHTML=`
-    <div class="res-linha"><span>Série</span><b>${d.serie}${d.turno&&d.turno!=='Único'?' ('+d.turno+')':''}</b></div>
-    <div class="res-linha"><span>Mensalidade tabela</span><b>${fmt(d.mensalidade)}</b></div>
-    <div class="res-linha"><span>Desconto total</span><b>${totalDesc.toFixed(1)}%${comIrmao?' (incl. irmão)':''}</b></div>
-    <div class="res-sug"><div class="l">Mensalidade Líquida a Ofertar</div><div class="v">${fmt(mensCalc)}</div></div>
-    ${material?`<div style="background:#fff8e1;border-radius:8px;padding:10px 14px;margin:6px 0;display:flex;justify-content:space-between;align-items:center;">
-      <span style="font-size:13px;color:#7a5200;">📦 + Material Didático (fixo)</span>
-      <b style="font-size:15px;color:#7a5200;">${fmt(material)}</b>
-    </div>
-    <div style="background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border-radius:10px;padding:12px 14px;margin:4px 0 10px;display:flex;justify-content:space-between;align-items:center;">
-      <span style="font-size:13px;font-weight:700;">🎯 Ticket Total (mens. + mat.)</span>
-      <b style="font-size:20px;">${fmt(ticketTotal)}</b>
-    </div>`:''}
-    <div class="res-block"><h4>📊 Resumo da Proposta</h4>
-      <div class="res-linha"><span>Mensalidade líquida × 12</span><b>${fmt(mensCalc*12)}</b></div>
-      ${material?`<div class="res-linha"><span>Material anual (fixo)</span><b>${fmt(materialAnual)}</b></div>
-      <div class="res-linha"><span><b>Receita anual total</b></span><b>${fmt(mensCalc*12+materialAnual)}</b></div>`:''}
-      <div class="res-linha"><span>Desconto em R$/mês</span><b style="color:var(--cv)">- ${fmt(descReais)}</b></div>
-      <div class="res-linha"><span>Desconto anual total</span><b style="color:var(--cv)">- ${fmt(descReais*12)}</b></div>
-    </div>
-    ${metaHtml}`;
-}
-
 // ── MATERIAL ───────────────────────────────────────────────────
 function renderMaterial(){
   const u=getUnidade(); const blocos={};
@@ -488,34 +336,20 @@ function renderMaterial(){
       <div class="mat-head"><span class="seg-badge ${badge[b.segmento]||''}" style="margin-right:8px">${b.segmento}</span>${b.serie}</div>
       <div class="mat-body">
         <div class="linha"><span>Material (tabela)</span><b>${fmt(b.material)}</b></div>
-        <div class="linha"><span>À vista até 30/09</span><b>${fmt(b.material*0.90)}</b></div>
         <div class="linha"><span>À vista a partir de out</span><b>${fmt(b.material*0.95)}</b></div>
       </div>
     </div>`).join('')||'<p style="color:#8a9ab0">Nenhum material nesta unidade.</p>';
 }
 
-// ── BOLSÕES ────────────────────────────────────────────────────
-function renderBolsoes(){
-  const grid=document.getElementById('bolsoes-grid');
-  grid.innerHTML=PORTAS.map((p,i)=>{
-    const unidChips=p.participantes.map(u=>`<span class="unid-chip">${NOMES[u]||u}</span>`).join('');
-    return `<div class="bolsao-card">
-      <div class="bolsao-head">
-        <div class="num">${p.label}</div>
-      </div>
-      <div class="bolsao-body">
-        <div style="margin-bottom:6px;font-size:12px;font-weight:700;color:#607080;text-transform:uppercase;letter-spacing:.5px;">Unidades participantes</div>
-        ${unidChips}
-      </div>
-    </div>`;
-  }).join('');
-}
-
 // ── INIT ───────────────────────────────────────────────────────
 window.onload=function(){
+  const unit=new URLSearchParams(location.search).get('unidade');
+  const select=document.getElementById('sel-unidade');
+  if([...select.options].some(o=>o.value===unit))select.value=unit;
   onUnidadeChange();
   renderPrazos();
-  renderBolsoes();
+  const panel=location.pathname.endsWith('calculadora.html')?'calc':location.pathname.endsWith('tickets.html')?'metas':null;
+  if(panel)trocarTab(panel,document.querySelector('[data-page="'+panel+'"]'));
 };
 </script>
 </body>
