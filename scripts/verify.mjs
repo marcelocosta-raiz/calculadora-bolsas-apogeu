@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 
 const html = readFileSync('index.html', 'utf8');
 const context = vm.createContext({});
-for (const file of ['dados.js', 'boletins.js', 'metas.js']) {
+for (const file of ['dados.js', 'boletins.js', 'metas.js', 'pricing.js', 'calculadora.js']) {
   vm.runInContext(readFileSync(file, 'utf8'), context, {filename: file});
 }
 for (const [,code] of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(code);
@@ -30,5 +30,8 @@ assert.equal(forbidden.test(JSON.stringify(data)), false);
 assert.ok(html.includes('painel-metas'));
 assert.doesNotMatch(html, /bolsoes|bolsao|renderBolsoes/i);
 assert.equal(vm.runInContext('typeof PORTAS', context), 'undefined');
-assert.ok(html.includes('Revisão necessária'));
+assert.ok(html.includes('Ticket projetado para recuperar a meta'));
+assert.ok(html.includes('cm-total'));
+assert.ok(html.includes('calculadora.html'));
+assert.ok(html.includes('tickets.html'));
 console.log('Checks passed:', JSON.stringify(report));
