@@ -13,15 +13,11 @@ const report = vm.runInContext(`({
   included: BOLETINS.metas.reduce((s,m)=>s+m.alunos,0),
   prices: DADOS.length,
   mapped: DADOS.filter(d=>buscarMeta(d)).length,
-  events: PORTAS.length,
-  hasDates: PORTAS.some(p=>p.data),
   noMeta: buscarMeta({unidade:'Zona Norte',segmento:'EI',serie:'Infantil 1'}),
   courses: DADOS.filter(d=>d.segmento==='CL'&&buscarMeta(d)).length,
   missingComparisons: BOLETINS.metas.filter(m=>m.ticket_alvo<m.ticket_minimo).length
 })`, context);
 assert.equal(report.metas, 70);
-assert.equal(report.events, 7);
-assert.equal(report.hasDates, false);
 assert.equal(report.noMeta, null);
 assert.ok(report.courses > 0);
 assert.equal(report.missingComparisons, 0);
@@ -32,5 +28,7 @@ assert.equal(data.email_ativo, false);
 const forbidden = /"(?:RA|ALUNO|CPF|CODPESSOAALUNO|destinatario|arquivo)"\s*:/i;
 assert.equal(forbidden.test(JSON.stringify(data)), false);
 assert.ok(html.includes('painel-metas'));
+assert.doesNotMatch(html, /bolsoes|bolsao|renderBolsoes/i);
+assert.equal(vm.runInContext('typeof PORTAS', context), 'undefined');
 assert.ok(html.includes('Revisão necessária'));
 console.log('Checks passed:', JSON.stringify(report));

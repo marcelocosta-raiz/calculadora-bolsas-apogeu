@@ -38,12 +38,12 @@ function renderMetas() {
   document.getElementById('metas-body').innerHTML = rows.map(m => {
     const exclusions = Object.values(m.excluidos).reduce((a,b) => a+b, 0);
     return `<tr><td>${textoSeguro(m.segmento)} · ${textoSeguro(m.serie)}</td>
-      <td>${m.alunos} / ${m.meta_alunos}</td><td>${moedaMeta(m.ticket_meta)}</td>
+      <td>${m.alunos} / ${m.meta_alunos}</td><td class="money">${moedaMeta(m.ticket_minimo)}</td>
       <td>${moedaMeta(m.ticket_realizado)}</td><td>${m.horizonte || 'Revisar'}</td>
-      <td class="money">${moedaMeta(m.ticket_alvo)}</td><td>${moedaMeta(m.limite_revisao)}</td>
+      <td>${moedaMeta(m.limite_revisao)}</td>
       <td><span class="meta-status ${m.revisao ? 'revisar' : ''}">${m.revisao ? 'Revisão necessária' : 'Dentro do limite'}</span>
       ${!m.alunos ? '<br>Sem alunos elegíveis; piso preservado' : ''}
       ${m.sem_horizonte ? '<br>Meta de quantidade zero; revisar horizonte' : ''}
       ${exclusions ? '<br>' + exclusions + ' excluído(s) ou pendente(s)' : ''}</td></tr>`;
-  }).join('') || '<tr><td colspan="8">Nenhuma série com os filtros selecionados.</td></tr>';
+  }).join('') || '<tr><td colspan="7">Nenhuma série com os filtros selecionados.</td></tr>';
 }

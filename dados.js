@@ -724,15 +724,6 @@ const DADOS = [
 const REGRAS = {
   "prazos": [
     {
-      "id": "p1",
-      "label": "Até 30/09",
-      "anuidade_desc": 0.1,
-      "material_avista_desc": 0.1,
-      "material_bo": 12,
-      "material_cc": 12,
-      "material_obs": "Último vencimento em ago/27"
-    },
-    {
       "id": "p2",
       "label": "Até 31/10",
       "anuidade_desc": 0.08,
@@ -1252,85 +1243,5 @@ const METAS = [
     "serie": "3ª Série",
     "ticket_meta": 905.95,
     "ticket_alvo": 996.55
-  }
-];
-
-const PORTAS = [
-  {
-    "label": "1º Bolsão de Matrículas",
-    "participantes": [
-      "Global School Cidade Alta",
-      "Global School Ferreira Guimarães",
-      "Zona Norte",
-      "Santo Antônio I",
-      "Santo Antônio II"
-    ],
-    "fora": []
-  },
-  {
-    "label": "2º Bolsão de Matrículas",
-    "participantes": [
-      "Global School Cidade Alta",
-      "Global School Ferreira Guimarães",
-      "Zona Norte",
-      "Santo Antônio I",
-      "Santo Antônio II"
-    ],
-    "fora": []
-  },
-  {
-    "label": "3º Bolsão de Matrículas",
-    "participantes": [
-      "Global School Cidade Alta",
-      "Global School Ferreira Guimarães",
-      "Zona Norte",
-      "Santo Antônio I",
-      "Santo Antônio II"
-    ],
-    "fora": []
-  },
-  {
-    "label": "4º Bolsão de Matrículas",
-    "participantes": [
-      "Global School Cidade Alta",
-      "Global School Ferreira Guimarães",
-      "Zona Norte",
-      "Santo Antônio I",
-      "Santo Antônio II"
-    ],
-    "fora": []
-  },
-  {
-    "label": "5º Bolsão de Matrículas",
-    "participantes": [
-      "Global School Cidade Alta",
-      "Global School Ferreira Guimarães",
-      "Zona Norte",
-      "Santo Antônio I",
-      "Santo Antônio II"
-    ],
-    "fora": []
-  },
-  {
-    "label": "6º Bolsão de Matrículas",
-    "participantes": [
-      "Global School Cidade Alta",
-      "Global School Ferreira Guimarães",
-      "Zona Norte",
-      "Santo Antônio I",
-      "Santo Antônio II"
-    ],
-    "fora": []
-  },
-  {
-    "label": "7º Bolsão de Matrículas",
-    "participantes": [
-      "Global School Cidade Alta",
-      "Global School Ferreira Guimarães",
-      "Zona Norte",
-      "Santo Antônio I",
-      "Santo Antônio II"
-    ],
-    "fora": []
   }
 ];
