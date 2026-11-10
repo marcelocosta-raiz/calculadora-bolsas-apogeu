@@ -724,15 +724,6 @@ const DADOS = [
 const REGRAS = {
   "prazos": [
     {
-      "id": "p2",
-      "label": "Até 31/10",
-      "anuidade_desc": 0.08,
-      "material_avista_desc": 0.05,
-      "material_bo": 11,
-      "material_cc": 12,
-      "material_obs": "Último vencimento em ago/27"
-    },
-    {
       "id": "p3",
       "label": "Até 30/11",
       "anuidade_desc": 0.07,
