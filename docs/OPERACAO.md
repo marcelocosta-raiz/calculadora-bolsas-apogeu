@@ -10,11 +10,11 @@ Os caminhos da pasta, base, executáveis e estado ficam em `.automation/config.j
 Reprocessar um arquivo idêntico não altera metas. Uma mudança na base de metas exige revisão explícita. Pisos da nova base não diminuem. Não há alerta de viabilidade do preço na interface, conforme decisão do usuário.
 
 ## Publicação
-Durante a validação da interface integrada, `publish_enabled` e `auto_merge` permanecem falsos. O monitor atualiza o aplicativo local, mas não altera produção.
+Rollout autorizado em 10/11/2026: `publish_enabled` e `auto_merge` são habilitados na configuração local após a publicação validada. O monitor publica os agregados via PR e CI, mantendo os dados individuais no computador.
 
 Após aprovação do rollout, o exportador usa checkout próprio, atualiza somente `boletins.json` e `boletins.js`, cria PR e exige CI `validate` aprovado. Confere origem Git, base master, repositório do PR, allowlist de arquivos, correspondência JSON/JS e preservação dos pisos antes de merge. Não há deploy direto. Vercel publica por integração Git após merge.
 
-O caminho de publicação foi implementado, mas não foi exercitado com merge em produção nesta entrega. A validação de rede/CI é feita no PR de integração, e o fluxo periódico de dados só pode ser ativado depois que esse código entrar em master.
+Consultar `.automation/state/health.json` para confirmar o resultado de cada execução. A automação depende do computador ligado, sessão disponível e credenciais GitHub válidas; falhas preservam a última publicação.
 
 ## E-mail
 Não ativo. Vercel Marketplace oferece Resend e exige aceite de termos na conta Raiz antes de concluir instalação. A flag de revisão e a lista local de séries continuam sendo calculadas. Essa lista não equivale a e-mail enviado. Configuração do remetente, deduplicação de envios e teste de entrega dependem do serviço real.
