@@ -2,7 +2,7 @@ name: Validate Apogeu
 on:
   pull_request:
   push:
-    branches: [master]
+    branches: [master, 'codex/**']
 permissions:
   contents: read
 jobs:
